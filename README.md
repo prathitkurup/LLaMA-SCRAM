@@ -22,22 +22,22 @@ Below is an instruction that describes a task, paired with an input that provide
 Training parameters are defined as follows:  
  ```python
 training_arguments = transformers.TrainingArguments(
-per_device_train_batch_size=MICRO_BATCH_SIZE,
-gradient_accumulation_steps=GRADIENT_ACCUMULATION_STEPS,
-warmup_steps=100,
-max_steps=TRAIN_STEPS,
-learning_rate=LEARNING_RATE,
-fp16=True,
-logging_steps=10,
-optim="adamw_torch",
-evaluation_strategy="steps",
-save_strategy="steps",
-eval_steps=25,
-save_steps=25,
-output_dir=OUTPUT_DIR,
-save_total_limit=3,
-load_best_model_at_end=True,
-report_to="tensorboard"
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=32,
+    warmup_steps=100,
+    max_steps=275,
+    learning_rate=3e-4,
+    fp16=True,
+    logging_steps=10,
+    optim="adamw_torch",
+    evaluation_strategy="steps",
+    save_strategy="steps",
+    eval_steps=25,
+    save_steps=25,
+    output_dir="experiments,
+    save_total_limit=3,
+    load_best_model_at_end=True,
+    report_to="tensorboard"
 )
  ```  
 
