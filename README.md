@@ -8,37 +8,37 @@ We created this model using Meta's LLaMA 7 billion parameter model. Data for fin
 ## Parameters
 We use the following prompt from the Stanford-Alpaca research team for fine-tuning and inference of the SCRAM model:  
  ```
- Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
- 
- ### Instruction:
- {instruction}
- 
- ### Input:
- {input}
- 
- ### Response:
+Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+
+### Input:
+{input}
+
+### Response:
  ```
 
 Training parameters are defined as follows:  
- ```
- training_arguments = transformers.TrainingArguments(
- per_device_train_batch_size=MICRO_BATCH_SIZE,
- gradient_accumulation_steps=GRADIENT_ACCUMULATION_STEPS,
- warmup_steps=100,
- max_steps=TRAIN_STEPS,
- learning_rate=LEARNING_RATE,
- fp16=True,
- logging_steps=10,
- optim="adamw_torch",
- evaluation_strategy="steps",
- save_strategy="steps",
- eval_steps=25,
- save_steps=25,
- output_dir=OUTPUT_DIR,
- save_total_limit=3,
- load_best_model_at_end=True,
- report_to="tensorboard"
- )
+ ```python
+training_arguments = transformers.TrainingArguments(
+per_device_train_batch_size=MICRO_BATCH_SIZE,
+gradient_accumulation_steps=GRADIENT_ACCUMULATION_STEPS,
+warmup_steps=100,
+max_steps=TRAIN_STEPS,
+learning_rate=LEARNING_RATE,
+fp16=True,
+logging_steps=10,
+optim="adamw_torch",
+evaluation_strategy="steps",
+save_strategy="steps",
+eval_steps=25,
+save_steps=25,
+output_dir=OUTPUT_DIR,
+save_total_limit=3,
+load_best_model_at_end=True,
+report_to="tensorboard"
+)
  ```  
 
 ## Testing Results
